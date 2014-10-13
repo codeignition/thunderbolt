@@ -48,8 +48,15 @@ module Thunderbolt
           puts "Cloning #{project.name}".colorize(:blue)
           run_cmd("git clone #{project.github} #{project.path}")
         end
+        bundle project
       end
     end
 
+    no_commands do
+      def bundle project
+        puts "fetching gems for #{project.name}".colorize(:blue)
+        run_cmd("cd  #{project.path} && source ~/.bash_profile && rbenv shell `cat .ruby-version` && ruby -v && bundle")
+      end
+    end
   end
 end
