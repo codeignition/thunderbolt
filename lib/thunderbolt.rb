@@ -29,5 +29,4 @@ module Thunderbolt
       project
     end
   end
-
 end
