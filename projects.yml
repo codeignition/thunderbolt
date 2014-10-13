@@ -2,6 +2,7 @@ projects:
   - name: grasshopper
     key: 6990000
     github: git@github.com:grasshoppergroup/ghuk-devops.git
+    ci: http://teamcity.grasshopperdev.com/
   - name: embibe
     key: 6990000
     github: git@github.com:codeignition/embibe-devops.git

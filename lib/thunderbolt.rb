@@ -31,6 +31,7 @@ module Thunderbolt
       project.name = project_config["name"]
       project.key = project_config["key"]
       project.github = project_config["github"]
+      project.ci = project_config["ci"]
       project
     end
   end
