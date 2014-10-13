@@ -1,0 +1,7 @@
+projects:
+  - name: grasshopper
+    key: 6990000
+    github: git@github.com:grasshoppergroup/ghuk-devops.git
+  - name: embibe
+    key: 6990000
+    github: git@github.com:codeignition/embibe-devops.git

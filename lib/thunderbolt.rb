@@ -1,26 +1,31 @@
 require "thunderbolt/version"
-require 'thunderbolt/cli'
 require 'thunderbolt/project'
+require 'thunderbolt/runnable'
 require 'yaml'
 require 'colorize'
 
 module Thunderbolt
   def self.configure_with(path_to_yaml_file)
     begin
-      config = YAML::load(IO.read(path_to_yaml_file))
+      @@config = YAML::load(IO.read("#{path_to_yaml_file}/settings.yml"))
+      project_config = YAML::load(IO.read("#{path_to_yaml_file}/projects.yml"))
+      set_projects(project_config)  if project_config
     rescue Psych::SyntaxError
       p  "error while parsing yaml configuration file. using defaults."; return
     rescue Errno::ENOENT
-      p  "yaml configuration file couldn't be found. using defaults."; return
+      p  "yaml configuration file couldn't be found"
     end
-    configure(config)  if config
+  end
+
+  def self.config
+    @@config
   end
 
   def self.projects
     @@projects
   end
 
-  def self.configure(config = {})
+  def self.set_projects(config = {})
     @@projects = config["projects"].map do |project_config|
       project = Project.new
       project.name = project_config["name"]

@@ -2,7 +2,8 @@
 
 require 'rubygems'
 $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib")))
-config_file_path = Dir.pwd+"/settings.yml"
-require 'thunderbolt/cli'
+config_file_path = Dir.pwd
+require 'thunderbolt'
 Thunderbolt.configure_with config_file_path
+require 'thunderbolt/cli'
 Thunderbolt::CLI.start
